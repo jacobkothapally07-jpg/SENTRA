@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+backend/venv/
+backend/__pycache__/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build outputs
+frontend/dist/
+dist/
+build/
+
+# Binaries & Tunnels
+cloudflared
+*.tar.gz
+*.zip
+
+# Environment & OS
+.env
+.env.local
+.DS_Store
+*.log
+.system_generated/
