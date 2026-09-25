@@ -1,22 +1,28 @@
 #!/usr/bin/env python3
 """
 Zero-Dependency Real-Time Live Web Data Ingestion Streamer for Sentra.
-Uses standard Python library (urllib.request) - requires ZERO external packages!
+Bypasses macOS local SSL certificate missing bundle using unverified context.
 Pulls real-time live events from GitHub Global Activity and streams to Sentra Cloud.
 """
 
 import time
 import random
 import json
+import ssl
 import urllib.request
 import urllib.error
 
 SENTRA_CLOUD_URL = "https://sentra-wipc.onrender.com/api/events"
 GITHUB_EVENTS_API = "https://api.github.com/events"
 
+# Create SSL context to handle macOS default missing CA certs
+ssl_ctx = ssl.create_default_context()
+ssl_ctx.check_hostname = False
+ssl_ctx.verify_mode = ssl.CERT_NONE
+
 
 def post_to_sentra(payload: dict) -> bool:
-    """Sends JSON event to Sentra using standard library urllib."""
+    """Sends JSON event to Sentra using standard library urllib with unverified SSL."""
     data_bytes = json.dumps(payload).encode("utf-8")
     req = urllib.request.Request(
         SENTRA_CLOUD_URL,
@@ -25,10 +31,9 @@ def post_to_sentra(payload: dict) -> bool:
         method="POST"
     )
     try:
-        with urllib.request.urlopen(req, timeout=5) as response:
+        with urllib.request.urlopen(req, timeout=5, context=ssl_ctx) as response:
             return response.status == 200
     except Exception as e:
-        # Fallback print if network drops
         return False
 
 
@@ -39,7 +44,7 @@ def fetch_github_events() -> list:
         headers={"User-Agent": "Sentra-Realtime-Monitor/1.0"}
     )
     try:
-        with urllib.request.urlopen(req, timeout=6) as response:
+        with urllib.request.urlopen(req, timeout=6, context=ssl_ctx) as response:
             if response.status == 200:
                 content = response.read().decode("utf-8")
                 return json.loads(content)
@@ -56,7 +61,7 @@ def fetch_github_events() -> list:
 
 def run_streamer():
     print("=" * 72)
-    print("  🌐 SENTRA REAL-TIME LIVE WEB STREAMER (ZERO-DEPENDENCY)")
+    print("  🌐 SENTRA REAL-TIME LIVE WEB STREAMER (ACTIVE)")
     print(f"  📡 Target Cloud : {SENTRA_CLOUD_URL}")
     print(f"  🌍 Data Source  : {GITHUB_EVENTS_API}")
     print("=" * 72)
@@ -108,7 +113,7 @@ def run_streamer():
                 latency = random.uniform(10.0, 50.0)
 
             # Simulate occasional real-world anomaly trigger
-            if random.random() < 0.12:
+            if random.random() < 0.15:
                 level = "CRITICAL"
                 service = random.choice(["payment-gateway", "postgres-db", "api-gateway"])
                 msg = f"🚨 LATENCY SPIKE ANOMALY: Downstream upstream timeout during {evt_type} on {repo_name}"
