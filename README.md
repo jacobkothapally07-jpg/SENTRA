@@ -12,9 +12,16 @@
 
 ---
 
-## 🚀 One-Command Deployment (.sh)
+## 🌐 Live Cloud Deployment
+- **Live Production URL:** [https://sentra-wipc.onrender.com](https://sentra-wipc.onrender.com)
+- **Live API Documentation:** [https://sentra-wipc.onrender.com/docs](https://sentra-wipc.onrender.com/docs)
+- **Real-Time Web Data Ingestion Streamer:** `python3 stream_real_web_data.py`
 
-Deploy the entire Sentra platform (Python virtualenv, 17-point test verification, production frontend build, and live services) with a single command:
+---
+
+## 🚀 One-Command Local Deployment (.sh)
+
+Deploy the entire Sentra platform locally (Python virtualenv, 17-point test verification, production frontend build, and live services) with a single command:
 
 ```bash
 chmod +x deploy.sh
@@ -26,7 +33,7 @@ Or run via `start.sh`:
 ./start.sh
 ```
 
-### 🌐 Live Endpoints:
+### 💻 Local Endpoints:
 - **Naval Cream Dashboard UI:** `http://localhost:5173`
 - **Unified FastAPI / SPA Server:** `http://localhost:8000`
 - **Interactive OpenAPI Documentation:** `http://localhost:8000/docs`

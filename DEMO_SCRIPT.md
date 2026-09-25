@@ -8,6 +8,7 @@
 ---
 
 ### ⏱️ Quick Summary & Timing
+- **Live Cloud URL:** `https://sentra-wipc.onrender.com`
 - **Total Duration:** 2.5 - 3.0 Minutes
 - **Goal:** Showcase the central innovation (**Runtime Evidence Graph**), demonstrate **Adaptive Incident Causality**, prove **False-Correlation Prevention** (Killer Demo #2), and exhibit the **Evidence-Grounded AI Engine** with the refined Naval Cream theme.
 
@@ -17,7 +18,7 @@
 
 ### 1. The Core Problem & Our Central Innovation (0:00 - 0:30)
 - **What to show on screen:**
-  - Open the Sentra Dashboard in **Naval Cream** (`http://localhost:5173` or `./deploy.sh`).
+  - Open the Sentra Dashboard in **Naval Cream** (`https://sentra-wipc.onrender.com` or local `http://localhost:5173`).
   - Point to the **Stats Bar** and **Topology View**: All 6 microservices healthy (Scores 98-100).
 - **What to say:**
   > *"Hello Judges. Existing incident platforms fail in modern architectures because they rely on static topology rules, fixed correlation windows, and simplistic co-occurrence. When two unrelated events happen at the same time, naive engines mistakenly merge them; when novel cascades occur, static rule engines miss the causal link.*
