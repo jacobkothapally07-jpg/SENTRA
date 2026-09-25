@@ -2,7 +2,7 @@
 > **Real-Time Intelligent Incident Detection & Response Engine**  
 > **Central Innovation:** *Runtime Evidence Graph for Adaptive Incident Causality*  
 > **Theme:** *Naval Cream Enterprise Design System*  
-> Built for the **HackForge 2026 Codeathon** by **Team 1234FORGE**  
+> Built for the **HackForge 2026 Codeathon**   
 > **Team Members:** Jacob Kothapally (Team Leader), Vedasri Peddapeta, Akshaya MV, Amith sai Jangam, sai srujan Shamshad.
 
 ---
