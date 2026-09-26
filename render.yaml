@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sentra-incident-engine
+    name: rakshacast-forge
     env: docker
     dockerfilePath: Dockerfile
     plan: free
@@ -8,4 +8,4 @@ services:
     healthCheckPath: /api/health
     envVars:
       - key: PORT
-        value: 8000
+        value: 8080
